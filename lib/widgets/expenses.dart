@@ -48,6 +48,9 @@ class _ExpensesState extends State<Expenses> {
     setState(() {
       _registeredExpenses.remove(expense);
     });
+
+    ScaffoldMessenger.of(context).clearSnackBars(); //기존 context 데이터 clear
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: const Duration(seconds: 3),
@@ -79,8 +82,13 @@ class _ExpensesState extends State<Expenses> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text('💰돈을 모으자!'),
-        backgroundColor: const Color(0xFFDB7624),
+        title: const Text(
+          '💰돈을 모으자!',
+          style: TextStyle(
+            color: Color(0xFFFFFFFF),
+          ),
+        ),
+        backgroundColor: const Color(0xFF00C5D3),
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,

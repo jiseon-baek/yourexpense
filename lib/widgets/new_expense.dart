@@ -46,8 +46,8 @@ class _NewExpenseState extends State<NewExpense> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: const Text('다시 입력해주세요.'),
-          content: const Text('잘못된 정보가 입력되었습니다.'),
+          title: const Text('⚠️'),
+          content: const Text('모든 항목을 입력해주세요.'),
           actions: [
             TextButton(
               onPressed: () {
@@ -69,6 +69,18 @@ class _NewExpenseState extends State<NewExpense> {
           category: _selectedCategory),
     );
     Navigator.pop(context);
+  }
+
+  String _getCategoryName(name) {
+    if (name == Category.food) {
+      return '음식🍙';
+    } else if (name == Category.leisure) {
+      return '여가🏄‍♀️';
+    } else if (name == Category.travel) {
+      return '여행🏖';
+    } else {
+      return '일🖥';
+    }
   }
 
   @override
@@ -133,9 +145,7 @@ class _NewExpenseState extends State<NewExpense> {
                     .map(
                       (category) => DropdownMenuItem(
                         value: category,
-                        child: Text(
-                          category.name.toUpperCase(),
-                        ),
+                        child: Text(_getCategoryName(category)),
                       ),
                     )
                     .toList(),
