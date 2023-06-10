@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yourexpense/widgets/chart/chart.dart';
 import 'package:yourexpense/widgets/expenses_list/expenses_list.dart';
 import 'package:yourexpense/models/expense.dart';
 import 'package:yourexpense/widgets/new_expense.dart';
@@ -13,16 +14,22 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [
     Expense(
-      title: '플러터 강의',
-      amount: 19000,
+      title: '택시',
+      amount: 6400,
       date: DateTime.now(),
-      category: Category.work,
+      category: Category.leisure,
     ),
     Expense(
-      title: '밥',
-      amount: 20000,
+      title: '앗싸곱창',
+      amount: 28000,
       date: DateTime.now(),
       category: Category.food,
+    ),
+    Expense(
+      title: '하루필름',
+      amount: 3000,
+      date: DateTime.now(),
+      category: Category.leisure,
     ),
   ];
 
@@ -88,7 +95,7 @@ class _ExpensesState extends State<Expenses> {
             color: Color(0xFFFFFFFF),
           ),
         ),
-        backgroundColor: const Color(0xFF00C5D3),
+        backgroundColor: const Color(0xFF419100),
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
@@ -97,6 +104,7 @@ class _ExpensesState extends State<Expenses> {
         ],
       ),
       body: Column(children: [
+        Chart(expenses: _registeredExpenses),
         Expanded(
           child: mainContent,
         ),
